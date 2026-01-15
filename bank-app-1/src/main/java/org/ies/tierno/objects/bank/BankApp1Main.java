@@ -10,6 +10,9 @@ import java.util.Scanner;
 public class BankApp1Main {
     public static void main(String[] args) {
         var scanner = new Scanner(System.in);
+
+
+        
         var customerReaer = new CustomerReader(scanner);
         var accountReader = new AccountReader(scanner, customerReaer);
         var bankReader = new BankReader(scanner, accountReader);
