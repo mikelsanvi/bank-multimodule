@@ -59,6 +59,38 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.13</version>
+
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <!-- Nombre de la imagen basado en el groupId y artifactId del proyecto -->
+                    <repository>${project.groupId}/${project.artifactId}</repository>
+                    <!-- Etiqueta (tag) de la imagen, por ejemplo 1.0.0 -->
+                    <tag>${project.version}</tag>
+
+                    <!-- Argumentos del Dockerfile -->
+                    <buildArgs>
+                        <!-- Esto debe coincidir con el ARG JAR_FILE del Dockerfile -->
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+
+                    <!-- (Opcional) contexto, por defecto es el root del proyecto -->
+                    <!-- <contextDirectory>${project.basedir}</contextDirectory> -->
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
