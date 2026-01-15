@@ -22,12 +22,14 @@ public class BankApp1 {
             System.out.println("La cuenta no existe");
         } else {
             account1.deposit(500);
+            account1.showInfo();
         }
         var account2 = bank.findAccount("ES0002");
         if(account2 == null) {
             System.out.println("La cuenta no existe");
         } else {
             account2.deposit(30);
+            account2.showInfo();
         }
 
         boolean done = bank.transfer("ES0001", "ES0002", 500);
@@ -36,8 +38,5 @@ public class BankApp1 {
         } else {
             System.out.println("No se ha realizado la transferencia");
         }
-
-        account1.showInfo();
-        account2.showInfo();
     }
 }
